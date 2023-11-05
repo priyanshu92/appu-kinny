@@ -4,9 +4,6 @@ function init() {
   // Basic options for a simple Google Map
   // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
   var venueCoordinates = new google.maps.LatLng(12.979172533215403, 77.54862287175516);
-  var venueName = 'Sapthapadi Sapthagiri Palace';
-  var venueAddress =
-    '15/18, Chord Rd, Rajaji Nagar Industrial Town, Rajajinagar, Bengaluru, Karnataka 560044, India';
 
   var mapOptions = {
     // How zoomed in you want the map to start at (always required)
@@ -90,25 +87,7 @@ function init() {
 
   var marker = new google.maps.Marker({
     position: venueCoordinates,
-    map: map,
-    icon: 'images/loc.png'
-  });
-
-  const infowindow = new google.maps.InfoWindow();
-
-  google.maps.event.addListener(marker, 'click', () => {
-    const content = document.createElement('div');
-    const nameElement = document.createElement('h2');
-
-    nameElement.textContent = venueName;
-    content.appendChild(nameElement);
-
-    const placeAddressElement = document.createElement('p');
-
-    placeAddressElement.textContent = venueAddress;
-    content.appendChild(placeAddressElement);
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
+    map: map
   });
 }
 google.maps.event.addDomListener(window, 'load', init);
