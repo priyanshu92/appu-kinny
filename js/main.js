@@ -182,7 +182,7 @@
   };
 
   var navigate = function () {
-    $('.menu-1 a').on('click', function (event) {
+    $(".menu-1 a, #fh5co-offcanvas a").on('click', function (event) {
       event.preventDefault();
 
       $('html, body').animate(
