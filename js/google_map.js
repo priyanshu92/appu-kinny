@@ -3,7 +3,7 @@ var google;
 function init() {
   // Basic options for a simple Google Map
   // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-  var venueCoordinates = new google.maps.LatLng(12.979158, 77.5460328);
+  var venueCoordinates = new google.maps.LatLng(12.9789213, 77.5475605);
   var venueName = 'Sapthapadi Sapthagiri Palace';
   var venueAddress =
     '15/18, Chord Rd, Rajaji Nagar Industrial Town, Rajajinagar, Bengaluru, Karnataka 560044, India';
