@@ -105,6 +105,8 @@ function init() {
         icon: 'images/loc.png'
       });
 
+      const infowindow = new google.maps.InfoWindow();
+
       google.maps.event.addListener(marker, 'click', () => {
         const content = document.createElement('div');
         const nameElement = document.createElement('h2');
