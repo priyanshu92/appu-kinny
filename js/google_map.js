@@ -15,7 +15,7 @@ function init() {
     center: venueCoordinates,
 
     // How you would like to style the map.
-    scrollwheel: true,
+    scrollwheel: false,
     styles: [
       {
         featureType: 'administrative.land_parcel',
