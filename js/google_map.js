@@ -92,7 +92,7 @@ function init() {
     map: map
   });
 
-  marker.on('click', function() {
+  marker.addListener('click', function () {
     window.open(
       'https://maps.google.com/maps?ll=12.979173,77.548623&z=15&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=5496535170827779147',
       '_blank'
