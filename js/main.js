@@ -187,7 +187,7 @@
 
       $('html, body').animate(
         {
-          scrollTop: $(event.target.href).offset().top
+          scrollTop: $(event.target.attributes['href'].nodeValue).offset().top
         },
         500,
         'easeInOutExpo'
