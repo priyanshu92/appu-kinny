@@ -8,6 +8,8 @@ function init() {
   var mapOptions = {
     // How zoomed in you want the map to start at (always required)
     zoom: 15,
+    mapTypeControl: false,
+    streetViewControl: false,
 
     // The latitude and longitude to center the map (always required)
     center: venueCoordinates,
