@@ -3,17 +3,17 @@ var google;
 function init() {
   // Basic options for a simple Google Map
   // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-  // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-  var myLatlng = new google.maps.LatLng(12.979158, 77.5460328);
-  // 39.399872
-  // -8.224454
+  var venueCoordinates = new google.maps.LatLng(12.979158, 77.5460328);
+  var venueName = 'Sapthapadi Sapthagiri Palace';
+  var venueAddress =
+    '15/18, Chord Rd, Rajaji Nagar Industrial Town, Rajajinagar, Bengaluru, Karnataka 560044, India';
 
   var mapOptions = {
     // How zoomed in you want the map to start at (always required)
     zoom: 15,
 
     // The latitude and longitude to center the map (always required)
-    center: myLatlng,
+    center: venueCoordinates,
 
     // How you would like to style the map.
     scrollwheel: true,
@@ -88,45 +88,27 @@ function init() {
   // Create the Google Map using out element and options defined above
   var map = new google.maps.Map(mapElement, mapOptions);
 
-  var address = 'Sapthapadi Sapthagiri Palace';
+  var marker = new google.maps.Marker({
+    position: venueCoordinates,
+    map: map,
+    icon: 'images/loc.png'
+  });
 
-  $.getJSON(
-    'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBKxlc6WNHS_Y4Ry1LZ_6oXfKj4PIDlWS4&address=' +
-      address +
-      '&sensor=false',
-    null,
-    function (data) {
-      var place = data.results[0];
-      var p = place.geometry.location;
-      var latlng = new google.maps.LatLng(p.lat, p.lng);
-      var marker = new google.maps.Marker({
-        position: latlng,
-        map: map,
-        icon: 'images/loc.png'
-      });
+  const infowindow = new google.maps.InfoWindow();
 
-      const infowindow = new google.maps.InfoWindow();
+  google.maps.event.addListener(marker, 'click', () => {
+    const content = document.createElement('div');
+    const nameElement = document.createElement('h2');
 
-      google.maps.event.addListener(marker, 'click', () => {
-        const content = document.createElement('div');
-        const nameElement = document.createElement('h2');
+    nameElement.textContent = venueName;
+    content.appendChild(nameElement);
 
-        nameElement.textContent = place.name;
-        content.appendChild(nameElement);
+    const placeAddressElement = document.createElement('p');
 
-        const placeIdElement = document.createElement('p');
-
-        placeIdElement.textContent = place.place_id;
-        content.appendChild(placeIdElement);
-
-        const placeAddressElement = document.createElement('p');
-
-        placeAddressElement.textContent = place.formatted_address;
-        content.appendChild(placeAddressElement);
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-      });
-    }
-  );
+    placeAddressElement.textContent = venueAddress;
+    content.appendChild(placeAddressElement);
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+  });
 }
 google.maps.event.addDomListener(window, 'load', init);
