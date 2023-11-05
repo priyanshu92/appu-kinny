@@ -185,6 +185,8 @@
     $(".menu-1 a, #fh5co-offcanvas a").on('click', function (event) {
       event.preventDefault();
 
+      $('.js-fh5co-nav-toggle').click();
+
       $('html, body').animate(
         {
           scrollTop: $(event.target.attributes['href'].nodeValue).offset().top
